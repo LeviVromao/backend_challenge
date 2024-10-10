@@ -1,6 +1,7 @@
 # cache do Go
-/go.sum
+go.sum
 /go/pkg/
+go.mod
 
 # Editor/IDE
 .vscode/

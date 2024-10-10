@@ -1,4 +1,4 @@
-module backend_challenge
+module github.com/LeviVromao/backend_challenge
 
 go 1.23.2
 
