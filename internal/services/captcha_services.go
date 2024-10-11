@@ -2,6 +2,7 @@ package services
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/url"
 	"os"
@@ -22,14 +23,18 @@ func VerifyCaptcha(recaptchaResponse string) bool {
 
 	resp, err := http.PostForm(recaptchaURL, data)
 	if err != nil {
+		fmt.Println("Erro ao conectar ao reCAPTCHA:", err)
 		return false
 	}
 	defer resp.Body.Close()
 
-	var result CaptchaResponse
+	var result map[string]interface{}
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+		fmt.Println("Erro ao decodificar a resposta do reCAPTCHA:", err)
 		return false
 	}
 
-	return result.Success
+	fmt.Printf("Resposta do reCAPTCHA: %+v\n", result)
+
+	return result["success"].(bool)
 }
