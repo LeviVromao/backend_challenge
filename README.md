@@ -175,11 +175,3 @@ docker build -t backend_challenge_go .
 ```bash
 docker run -p 8080:8080 backend_challenge_go
 ```
-
-### Documentação com Swagger
-
-A API está documentada utilizando Swagger. Para acessar a documentação interativa, acesse o endpoint `/api-docs` após iniciar a aplicação:
-
-```bash
-http://localhost:8080/api-docs
-```
